@@ -1,13 +1,16 @@
 import 'package:example/ui/home/components/button.dart';
 import 'package:example/ui/home/components/schedule.dart';
+import 'package:example/ui/home/view_moidel.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(homeViewModelProvider);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -23,7 +26,7 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 20),
                 ),
               ),
-              HomeScreenSchedule(),
+              HomeScreenSchedule(schedule: state.schedule),
             ],
           ),
         ),

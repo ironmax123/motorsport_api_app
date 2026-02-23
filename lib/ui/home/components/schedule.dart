@@ -1,8 +1,10 @@
+import 'package:example/model/schedule/schedule.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class HomeScreenSchedule extends StatelessWidget {
-  const HomeScreenSchedule({super.key});
+  final List<ScheduleEntry> schedule;
+  const HomeScreenSchedule({super.key, required this.schedule});
 
   @override
   Widget build(BuildContext context) {
@@ -10,23 +12,14 @@ class HomeScreenSchedule extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          _ScheduleCard(
-            round: "Rd.1",
-            circuit: "Circuit 1",
-            date: "4/11-04/12",
-          ),
-          Gap(12),
-          _ScheduleCard(
-            round: "Rd.2",
-            circuit: "Circuit 2",
-            date: "4/11-04/12",
-          ),
-          Gap(12),
-          _ScheduleCard(
-            round: "Rd.3",
-            circuit: "Circuit 3",
-            date: "4/11-04/12",
-          ),
+          for (final entry in schedule) ...[
+            _ScheduleCard(
+              round: entry.round,
+              circuit: entry.courseJp,
+              date: entry.date,
+            ),
+            const Gap(12),
+          ],
         ],
       ),
     );
