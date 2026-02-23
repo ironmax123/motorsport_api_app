@@ -2,23 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class HomeScreenButton extends StatelessWidget {
-  const HomeScreenButton({super.key});
+  final String label;
+  final Color color;
+  const HomeScreenButton({
+    super.key,
+    required this.onTap,
+    required this.label,
+    required this.color,
+  });
+
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => onTap(),
       child: Container(
         height: 50,
         decoration: BoxDecoration(
-          color: Color(0xffCC0000),
+          color: color,
           borderRadius: BorderRadius.circular(24),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Super GT",
+              label,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
             Gap(24),

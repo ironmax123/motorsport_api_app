@@ -3,6 +3,7 @@ import 'package:example/ui/home/components/schedule.dart';
 import 'package:example/ui/home/view_moidel.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomeScreen extends HookConsumerWidget {
@@ -17,7 +18,11 @@ class HomeScreen extends HookConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              HomeScreenButton(),
+              HomeScreenButton(
+                onTap: () => context.push('/entry', extra: 'Super GT'),
+                label: "Super GT",
+                color: const Color(0xffCC0000),
+              ),
               Gap(12),
               Align(
                 alignment: Alignment.centerLeft,
