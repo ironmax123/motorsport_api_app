@@ -27,18 +27,29 @@ class CarLabel extends StatelessWidget {
       decoration: BoxDecoration(color: Colors.white),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Row(
-          children: [
-            _NumberPlate(number: carNumber),
-            Gap(4),
-            Text(label1),
-            Gap(10),
-            Text(label2),
-            Gap(10),
-            Column(children: [Text(driverName1), Text(driverName2)]),
-            if (driverName3 != null && driverName4 != null)
-              Column(children: [Text(driverName3!), Text(driverName4!)]),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Row(
+            children: [
+              _NumberPlate(number: carNumber),
+              Gap(4),
+              Text(label1),
+              Gap(10),
+              Text(label2),
+              Gap(10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [Text(driverName1), Text(driverName2)],
+              ),
+              if (driverName3 != null && driverName4 != null)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [Text(driverName3!), Text(driverName4!)],
+                ),
+            ],
+          ),
         ),
       ),
     );
@@ -79,10 +90,10 @@ class _NumberPlate extends StatelessWidget {
             child: Container(
               color: Colors.white,
               alignment: Alignment.center,
-              child: const Text(
-                '1',
-                style: TextStyle(
-                  fontSize: 22,
+              child: Text(
+                number,
+                style: const TextStyle(
+                  fontSize: 14,
                   fontWeight: FontWeight.w600,
                   height: 1.0,
                   color: Colors.black,

@@ -1,28 +1,52 @@
-import 'package:example/ui/entry/components/button_group.dart';
+import 'package:example/ui/entry/view_model.dart';
 import 'package:example/ui/shared/car_label.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:m3_expressive_flutter/m3_expressive_flutter.dart';
 
-class EntryScreen extends StatelessWidget {
+class EntryScreen extends HookConsumerWidget {
   final String raceName;
   const EntryScreen({super.key, required this.raceName});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(entryViewModelProvider);
+    final selected = useState(0);
+    if (state.isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
     return Scaffold(
       appBar: AppBar(title: Text(raceName)),
-      body: Column(
+      body: ListView(
         children: [
-          Text("2026 season Entry"),
-          EntryScreenButtonGroup(),
-          Gap(12),
-          CarLabel(
-            carNumber: "1",
-            label1: "TOYOTA \n GR Supra GT500",
-            label2: "TGR TEAM au TOM’S \nau TOM'S GR Supra",
-            driverName1: "Driver 1",
-            driverName2: "Driver 2",
+          Text("2026 season Entry", style: TextStyle(fontSize: 20)),
+          ButtonGroup.connected(
+            selectionMode: ButtonGroupSelectionMode.required,
+            initialSelection: {selected.value},
+            onSelectionChanged: (s) {
+              selected.value = s.first;
+              final category = selected.value == 0 ? 'gt500' : 'gt300';
+              ref.read(entryViewModelProvider.notifier).fetch(category);
+            },
+            children: const [
+              ButtonGroupItem(label: 'GT 500'),
+              ButtonGroupItem(label: 'GT 300'),
+            ],
           ),
+          Gap(12),
+          for (final team in state.teams) ...[
+            CarLabel(
+              carNumber: team.carNumber,
+              label1: team.car,
+              label2: team.name,
+              driverName1: team.driver1,
+              driverName2: team.driver2,
+            ),
+            Gap(12),
+          ],
         ],
       ),
     );
