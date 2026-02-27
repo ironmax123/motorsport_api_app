@@ -28,7 +28,7 @@ class HomeScreen extends HookConsumerWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "2026 season Schedule",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
               HomeScreenSchedule(schedule: state.schedule),
