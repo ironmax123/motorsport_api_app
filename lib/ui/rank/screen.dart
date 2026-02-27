@@ -35,7 +35,10 @@ class RankScreen extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Rank'), centerTitle: true),
-      body: Column(
+      body: ListView(
+        padding: const EdgeInsets.only(
+          bottom: 120,
+        ), // Bottom Navigation Bar 領域の確保
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -44,41 +47,156 @@ class RankScreen extends HookConsumerWidget {
               children: [
                 Row(
                   children: [
-                    _buildDropdown(
-                      label: "Race",
-                      value: "SuperGT",
-                      items: ["SuperGT"],
-                      onChanged: (v) {},
+                    // Race Dropdown
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Race",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const Gap(4),
+                        Container(
+                          height: 32,
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.grey.shade300),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: DropdownButton<String>(
+                            value: "SuperGT",
+                            underline: const SizedBox(),
+                            items: ["SuperGT"]
+                                .map(
+                                  (e) => DropdownMenuItem(
+                                    value: e,
+                                    child: Text(e),
+                                  ),
+                                )
+                                .toList(),
+                            onChanged: (v) {},
+                            isDense: true,
+                          ),
+                        ),
+                      ],
                     ),
                     const Gap(16),
-                    _buildDropdown(
-                      label: "Season",
-                      value: state.year,
-                      items: [for (int i = 2016; i <= 2025; i++) i.toString()],
-                      onChanged: (v) {
-                        if (v != null) {
-                          ref
-                              .read(rankViewModelProvider.notifier)
-                              .fetch(year: v);
-                        }
-                      },
+
+                    // Season Dropdown
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Season",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const Gap(4),
+                        Container(
+                          height: 32,
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.grey.shade300),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: DropdownButton<String>(
+                            value: state.year,
+                            underline: const SizedBox(),
+                            items:
+                                [
+                                      for (int i = 2016; i <= 2025; i++)
+                                        i.toString(),
+                                    ]
+                                    .map(
+                                      (e) => DropdownMenuItem(
+                                        value: e,
+                                        child: Text(e),
+                                      ),
+                                    )
+                                    .toList(),
+                            onChanged: (v) {
+                              if (v != null) {
+                                ref
+                                    .read(rankViewModelProvider.notifier)
+                                    .fetch(year: v);
+                              }
+                            },
+                            isDense: true,
+                          ),
+                        ),
+                      ],
                     ),
                     const Gap(16),
-                    _buildDropdown(
-                      label: "Round",
-                      value: state.round,
-                      items: ["total", "1", "2", "3", "4", "5", "6", "7", "8"],
-                      onChanged: (v) {
-                        if (v != null) {
-                          ref
-                              .read(rankViewModelProvider.notifier)
-                              .fetch(round: v);
-                        }
-                      },
+
+                    // Round Dropdown
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Round",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                          ),
+                        ),
+                        const Gap(4),
+                        Container(
+                          height: 32,
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.grey.shade300),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: DropdownButton<String>(
+                            value: state.round,
+                            underline: const SizedBox(),
+                            items:
+                                [
+                                      "total",
+                                      "1",
+                                      "2",
+                                      "3",
+                                      "4",
+                                      "5",
+                                      "6",
+                                      "7",
+                                      "8",
+                                    ]
+                                    .map(
+                                      (e) => DropdownMenuItem(
+                                        value: e,
+                                        child: Text(e),
+                                      ),
+                                    )
+                                    .toList(),
+                            onChanged: (v) {
+                              if (v != null) {
+                                ref
+                                    .read(rankViewModelProvider.notifier)
+                                    .fetch(round: v);
+                              }
+                            },
+                            isDense: true,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
                 const Gap(16),
+
+                // Category Dropdown
                 Row(
                   children: [
                     const Text(
@@ -91,6 +209,8 @@ class RankScreen extends HookConsumerWidget {
                     ),
                     const Gap(8),
                     Container(
+                      height: 32,
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(color: Colors.grey.shade300),
@@ -99,9 +219,7 @@ class RankScreen extends HookConsumerWidget {
                       child: DropdownButton<String>(
                         value: state.category,
                         style: const TextStyle(color: Colors.black),
-
                         underline: const SizedBox(),
-
                         items: ["gt500", "gt300"]
                             .map(
                               (e) => DropdownMenuItem(
@@ -117,6 +235,7 @@ class RankScreen extends HookConsumerWidget {
                                 .fetch(category: v);
                           }
                         },
+                        isDense: true,
                       ),
                     ),
                   ],
@@ -124,89 +243,52 @@ class RankScreen extends HookConsumerWidget {
               ],
             ),
           ),
-          Expanded(
-            child: state.isLoading
-                ? const Center(child: CircularProgressIndicator())
-                : state.error.isNotEmpty
-                ? Center(child: Text('Error: ${state.error}'))
-                : ListView.builder(
-                    padding: const EdgeInsets.only(bottom: 120),
-                    itemCount: state.results.length,
-                    itemBuilder: (context, index) {
-                      final result = state.results[index];
-                      final team = result.team;
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 4,
-                            ),
-                            child: Text(
-                              "${result.rank}${_getRankSuffix(result.rank)}",
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          if (team != null)
-                            CarLabel(
-                              carNumber: team.carNumber,
-                              label1: "${team.name}\n${team.machine}",
-                              label2: result.diff ?? "",
-                              driverName1: team.driver1,
-                              driverName2: team.driver2,
-                            ),
-                        ],
-                      );
-                    },
+
+          const Divider(),
+
+          // 検索結果 (for文で展開)
+          if (state.isLoading)
+            const Padding(
+              padding: EdgeInsets.all(32.0),
+              child: Center(child: CircularProgressIndicator()),
+            )
+          else if (state.error.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Center(child: Text('Error: ${state.error}')),
+            )
+          else
+            for (final result in state.results)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    color: const Color(0xFF001529),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 4,
+                    ),
+                    child: Text(
+                      "${result.rank}${_getRankSuffix(result.rank)}",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-          ),
+                  if (result.team != null)
+                    CarLabel(
+                      carNumber: result.team!.carNumber,
+                      label1: "${result.team!.name}\n${result.team!.machine}",
+                      label2: result.diff ?? "",
+                      driverName1: result.team!.driver1,
+                      driverName2: result.team!.driver2,
+                    ),
+                ],
+              ),
         ],
       ),
-    );
-  }
-
-  Widget _buildDropdown({
-    required String label,
-    required String value,
-    required List<String> items,
-    required ValueChanged<String?> onChanged,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 12,
-            color: Colors.white,
-          ),
-        ),
-        const Gap(4),
-        Container(
-          height: 32,
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: Colors.grey.shade300),
-            borderRadius: BorderRadius.circular(4),
-          ),
-          child: DropdownButton<String>(
-            value: value,
-            underline: const SizedBox(),
-            items: items
-                .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-                .toList(),
-            onChanged: onChanged,
-            isDense: true,
-          ),
-        ),
-      ],
     );
   }
 }
