@@ -85,29 +85,39 @@ class RankScreen extends HookConsumerWidget {
                       "Category",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
+                        color: Colors.white,
                         fontSize: 12,
                       ),
                     ),
                     const Gap(8),
-                    DropdownButton<String>(
-                      value: state.category,
-                      style: const TextStyle(color: Colors.black),
-                      underline: const SizedBox(),
-                      items: ["gt500", "gt300"]
-                          .map(
-                            (e) => DropdownMenuItem(
-                              value: e,
-                              child: Text(e.toUpperCase()),
-                            ),
-                          )
-                          .toList(),
-                      onChanged: (v) {
-                        if (v != null) {
-                          ref
-                              .read(rankViewModelProvider.notifier)
-                              .fetch(category: v);
-                        }
-                      },
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.grey.shade300),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: DropdownButton<String>(
+                        value: state.category,
+                        style: const TextStyle(color: Colors.black),
+
+                        underline: const SizedBox(),
+
+                        items: ["gt500", "gt300"]
+                            .map(
+                              (e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(e.toUpperCase()),
+                              ),
+                            )
+                            .toList(),
+                        onChanged: (v) {
+                          if (v != null) {
+                            ref
+                                .read(rankViewModelProvider.notifier)
+                                .fetch(category: v);
+                          }
+                        },
+                      ),
                     ),
                   ],
                 ),
@@ -120,6 +130,7 @@ class RankScreen extends HookConsumerWidget {
                 : state.error.isNotEmpty
                 ? Center(child: Text('Error: ${state.error}'))
                 : ListView.builder(
+                    padding: const EdgeInsets.only(bottom: 120),
                     itemCount: state.results.length,
                     itemBuilder: (context, index) {
                       final result = state.results[index];
@@ -170,7 +181,11 @@ class RankScreen extends HookConsumerWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 12,
+            color: Colors.white,
+          ),
         ),
         const Gap(4),
         Container(

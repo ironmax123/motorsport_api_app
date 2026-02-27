@@ -22,6 +22,7 @@ class AppRouter {
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return Scaffold(
+            extendBody: true,
             body: navigationShell,
             bottomNavigationBar: SafeArea(
               child: Padding(
