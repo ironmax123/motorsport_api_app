@@ -1,4 +1,4 @@
-import 'package:example/router/router.dart';
+import 'package:example/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

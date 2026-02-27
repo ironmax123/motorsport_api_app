@@ -36,28 +36,16 @@ abstract class _$SuperGTCars
   FutureOr<SuperGTCarsResponse> build({required String category});
 }
 
-/// カテゴリ: 'gt500' または 'gt300'
-/// year: オプション（省略時はサーバー側でデフォルト2025）
-///
-/// Copied from [SuperGTCars].
+/// See also [SuperGTCars].
 @ProviderFor(SuperGTCars)
 const superGTCarsProvider = SuperGTCarsFamily();
 
-/// カテゴリ: 'gt500' または 'gt300'
-/// year: オプション（省略時はサーバー側でデフォルト2025）
-///
-/// Copied from [SuperGTCars].
+/// See also [SuperGTCars].
 class SuperGTCarsFamily extends Family<AsyncValue<SuperGTCarsResponse>> {
-  /// カテゴリ: 'gt500' または 'gt300'
-  /// year: オプション（省略時はサーバー側でデフォルト2025）
-  ///
-  /// Copied from [SuperGTCars].
+  /// See also [SuperGTCars].
   const SuperGTCarsFamily();
 
-  /// カテゴリ: 'gt500' または 'gt300'
-  /// year: オプション（省略時はサーバー側でデフォルト2025）
-  ///
-  /// Copied from [SuperGTCars].
+  /// See also [SuperGTCars].
   SuperGTCarsProvider call({required String category}) {
     return SuperGTCarsProvider(category: category);
   }
@@ -84,16 +72,10 @@ class SuperGTCarsFamily extends Family<AsyncValue<SuperGTCarsResponse>> {
   String? get name => r'superGTCarsProvider';
 }
 
-/// カテゴリ: 'gt500' または 'gt300'
-/// year: オプション（省略時はサーバー側でデフォルト2025）
-///
-/// Copied from [SuperGTCars].
+/// See also [SuperGTCars].
 class SuperGTCarsProvider
     extends AsyncNotifierProviderImpl<SuperGTCars, SuperGTCarsResponse> {
-  /// カテゴリ: 'gt500' または 'gt300'
-  /// year: オプション（省略時はサーバー側でデフォルト2025）
-  ///
-  /// Copied from [SuperGTCars].
+  /// See also [SuperGTCars].
   SuperGTCarsProvider({required String category})
     : this._internal(
         () => SuperGTCars()..category = category,
