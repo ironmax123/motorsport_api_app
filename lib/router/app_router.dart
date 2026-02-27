@@ -1,6 +1,5 @@
 import 'package:example/ui/entry/screen.dart';
 import 'package:example/ui/home/screen.dart';
-import 'package:example/ui/main/main_screen.dart';
 import 'package:example/ui/rank/screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -22,7 +21,57 @@ class AppRouter {
     routes: [
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
-          return MainScreen(navigationShell: navigationShell);
+          return Scaffold(
+            body: navigationShell,
+            bottomNavigationBar: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24.0,
+                  vertical: 8.0,
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.1),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(40),
+                    child: NavigationBar(
+                      height: 70,
+                      backgroundColor: const Color(0xFFF7F2FA),
+                      indicatorColor: const Color(0xFFE8DEF8),
+                      selectedIndex: navigationShell.currentIndex,
+                      destinations: const [
+                        NavigationDestination(
+                          icon: Icon(Icons.home_outlined),
+                          selectedIcon: Icon(Icons.home),
+                          label: 'Home',
+                        ),
+                        NavigationDestination(
+                          icon: Icon(Icons.emoji_events_outlined),
+                          selectedIcon: Icon(Icons.emoji_events),
+                          label: 'rank',
+                        ),
+                      ],
+                      onDestinationSelected: (index) {
+                        navigationShell.goBranch(
+                          index,
+                          initialLocation:
+                              index == navigationShell.currentIndex,
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
         },
         branches: [
           StatefulShellBranch(
