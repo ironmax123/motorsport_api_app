@@ -1,3 +1,4 @@
+import 'package:example/ui/rank/components/rank_dropdown.dart';
 import 'package:example/ui/rank/view_model.dart';
 import 'package:example/ui/shared/car_label.dart';
 import 'package:flutter/material.dart';
@@ -48,197 +49,70 @@ class RankScreen extends HookConsumerWidget {
                 Row(
                   children: [
                     // Race Dropdown
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Race",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const Gap(4),
-                        Container(
-                          height: 32,
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.grey.shade300),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          child: DropdownButton<String>(
-                            value: "SuperGT",
-                            underline: const SizedBox(),
-                            items: ["SuperGT"]
-                                .map(
-                                  (e) => DropdownMenuItem(
-                                    value: e,
-                                    child: Text(e),
-                                  ),
-                                )
-                                .toList(),
-                            onChanged: (v) {},
-                            isDense: true,
-                          ),
-                        ),
-                      ],
+                    RankDropdown(
+                      label: "Race",
+                      value: "SuperGT",
+                      items: const ["SuperGT"],
+                      onChanged: (v) {},
                     ),
                     const Gap(16),
 
                     // Season Dropdown
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Season",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const Gap(4),
-                        Container(
-                          height: 32,
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.grey.shade300),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          child: DropdownButton<String>(
-                            value: state.year,
-                            underline: const SizedBox(),
-                            items:
-                                [
-                                      for (int i = 2016; i <= 2025; i++)
-                                        i.toString(),
-                                    ]
-                                    .map(
-                                      (e) => DropdownMenuItem(
-                                        value: e,
-                                        child: Text(e),
-                                      ),
-                                    )
-                                    .toList(),
-                            onChanged: (v) {
-                              if (v != null) {
-                                ref
-                                    .read(rankViewModelProvider.notifier)
-                                    .fetch(year: v);
-                              }
-                            },
-                            isDense: true,
-                          ),
-                        ),
-                      ],
+                    RankDropdown(
+                      label: "Season",
+                      value: state.year,
+                      items: [for (int i = 2016; i <= 2025; i++) i.toString()],
+                      onChanged: (v) {
+                        if (v != null) {
+                          ref
+                              .read(rankViewModelProvider.notifier)
+                              .fetch(year: v);
+                        }
+                      },
                     ),
                     const Gap(16),
 
                     // Round Dropdown
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Round",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12,
-                          ),
-                        ),
-                        const Gap(4),
-                        Container(
-                          height: 32,
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.grey.shade300),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          child: DropdownButton<String>(
-                            value: state.round,
-                            underline: const SizedBox(),
-                            items:
-                                [
-                                      "total",
-                                      "1",
-                                      "2",
-                                      "3",
-                                      "4",
-                                      "5",
-                                      "6",
-                                      "7",
-                                      "8",
-                                    ]
-                                    .map(
-                                      (e) => DropdownMenuItem(
-                                        value: e,
-                                        child: Text(e),
-                                      ),
-                                    )
-                                    .toList(),
-                            onChanged: (v) {
-                              if (v != null) {
-                                ref
-                                    .read(rankViewModelProvider.notifier)
-                                    .fetch(round: v);
-                              }
-                            },
-                            isDense: true,
-                          ),
-                        ),
+                    RankDropdown(
+                      label: "Round",
+                      value: state.round,
+                      items: const [
+                        "total",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
                       ],
+                      onChanged: (v) {
+                        if (v != null) {
+                          ref
+                              .read(rankViewModelProvider.notifier)
+                              .fetch(round: v);
+                        }
+                      },
                     ),
                   ],
                 ),
                 const Gap(16),
 
                 // Category Dropdown
-                Row(
-                  children: [
-                    const Text(
-                      "Category",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 12,
-                      ),
-                    ),
-                    const Gap(8),
-                    Container(
-                      height: 32,
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.grey.shade300),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: DropdownButton<String>(
-                        value: state.category,
-                        style: const TextStyle(color: Colors.black),
-                        underline: const SizedBox(),
-                        items: ["gt500", "gt300"]
-                            .map(
-                              (e) => DropdownMenuItem(
-                                value: e,
-                                child: Text(e.toUpperCase()),
-                              ),
-                            )
-                            .toList(),
-                        onChanged: (v) {
-                          if (v != null) {
-                            ref
-                                .read(rankViewModelProvider.notifier)
-                                .fetch(category: v);
-                          }
-                        },
-                        isDense: true,
-                      ),
-                    ),
-                  ],
+                RankDropdown(
+                  label: "Category",
+                  value: state.category,
+                  items: const ["gt500", "gt300"],
+                  labelBuilder: (e) => e.toUpperCase(),
+                  isRow: true,
+                  onChanged: (v) {
+                    if (v != null) {
+                      ref
+                          .read(rankViewModelProvider.notifier)
+                          .fetch(category: v);
+                    }
+                  },
                 ),
               ],
             ),
