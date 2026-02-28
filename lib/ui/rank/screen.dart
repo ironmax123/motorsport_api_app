@@ -35,12 +35,12 @@ class RankScreen extends HookConsumerWidget {
     }, const []);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Rank'), centerTitle: true),
       body: ListView(
         padding: const EdgeInsets.only(
           bottom: 120,
         ), // Bottom Navigation Bar 領域の確保
         children: [
+          const Gap(30),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
