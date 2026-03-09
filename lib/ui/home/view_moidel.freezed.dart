@@ -19,7 +19,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeViewModelState {
   bool get isLoading => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
-  List<ScheduleEntry> get schedule => throw _privateConstructorUsedError;
+  List<ScheduleEntry> get superGtSchedule => throw _privateConstructorUsedError;
+  List<ScheduleEntry> get f1Schedule => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeViewModelState
   /// with the given fields replaced by the non-null parameter values.
@@ -35,7 +36,12 @@ abstract class $HomeViewModelStateCopyWith<$Res> {
     $Res Function(HomeViewModelState) then,
   ) = _$HomeViewModelStateCopyWithImpl<$Res, HomeViewModelState>;
   @useResult
-  $Res call({bool isLoading, String error, List<ScheduleEntry> schedule});
+  $Res call({
+    bool isLoading,
+    String error,
+    List<ScheduleEntry> superGtSchedule,
+    List<ScheduleEntry> f1Schedule,
+  });
 }
 
 /// @nodoc
@@ -55,7 +61,8 @@ class _$HomeViewModelStateCopyWithImpl<$Res, $Val extends HomeViewModelState>
   $Res call({
     Object? isLoading = null,
     Object? error = null,
-    Object? schedule = null,
+    Object? superGtSchedule = null,
+    Object? f1Schedule = null,
   }) {
     return _then(
       _value.copyWith(
@@ -67,9 +74,13 @@ class _$HomeViewModelStateCopyWithImpl<$Res, $Val extends HomeViewModelState>
                 ? _value.error
                 : error // ignore: cast_nullable_to_non_nullable
                       as String,
-            schedule: null == schedule
-                ? _value.schedule
-                : schedule // ignore: cast_nullable_to_non_nullable
+            superGtSchedule: null == superGtSchedule
+                ? _value.superGtSchedule
+                : superGtSchedule // ignore: cast_nullable_to_non_nullable
+                      as List<ScheduleEntry>,
+            f1Schedule: null == f1Schedule
+                ? _value.f1Schedule
+                : f1Schedule // ignore: cast_nullable_to_non_nullable
                       as List<ScheduleEntry>,
           )
           as $Val,
@@ -86,7 +97,12 @@ abstract class _$$HomeViewModelStateImplCopyWith<$Res>
   ) = __$$HomeViewModelStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, String error, List<ScheduleEntry> schedule});
+  $Res call({
+    bool isLoading,
+    String error,
+    List<ScheduleEntry> superGtSchedule,
+    List<ScheduleEntry> f1Schedule,
+  });
 }
 
 /// @nodoc
@@ -105,7 +121,8 @@ class __$$HomeViewModelStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? error = null,
-    Object? schedule = null,
+    Object? superGtSchedule = null,
+    Object? f1Schedule = null,
   }) {
     return _then(
       _$HomeViewModelStateImpl(
@@ -117,9 +134,13 @@ class __$$HomeViewModelStateImplCopyWithImpl<$Res>
             ? _value.error
             : error // ignore: cast_nullable_to_non_nullable
                   as String,
-        schedule: null == schedule
-            ? _value._schedule
-            : schedule // ignore: cast_nullable_to_non_nullable
+        superGtSchedule: null == superGtSchedule
+            ? _value._superGtSchedule
+            : superGtSchedule // ignore: cast_nullable_to_non_nullable
+                  as List<ScheduleEntry>,
+        f1Schedule: null == f1Schedule
+            ? _value._f1Schedule
+            : f1Schedule // ignore: cast_nullable_to_non_nullable
                   as List<ScheduleEntry>,
       ),
     );
@@ -132,24 +153,34 @@ class _$HomeViewModelStateImpl implements _HomeViewModelState {
   const _$HomeViewModelStateImpl({
     required this.isLoading,
     required this.error,
-    required final List<ScheduleEntry> schedule,
-  }) : _schedule = schedule;
+    required final List<ScheduleEntry> superGtSchedule,
+    required final List<ScheduleEntry> f1Schedule,
+  }) : _superGtSchedule = superGtSchedule,
+       _f1Schedule = f1Schedule;
 
   @override
   final bool isLoading;
   @override
   final String error;
-  final List<ScheduleEntry> _schedule;
+  final List<ScheduleEntry> _superGtSchedule;
   @override
-  List<ScheduleEntry> get schedule {
-    if (_schedule is EqualUnmodifiableListView) return _schedule;
+  List<ScheduleEntry> get superGtSchedule {
+    if (_superGtSchedule is EqualUnmodifiableListView) return _superGtSchedule;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_schedule);
+    return EqualUnmodifiableListView(_superGtSchedule);
+  }
+
+  final List<ScheduleEntry> _f1Schedule;
+  @override
+  List<ScheduleEntry> get f1Schedule {
+    if (_f1Schedule is EqualUnmodifiableListView) return _f1Schedule;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_f1Schedule);
   }
 
   @override
   String toString() {
-    return 'HomeViewModelState(isLoading: $isLoading, error: $error, schedule: $schedule)';
+    return 'HomeViewModelState(isLoading: $isLoading, error: $error, superGtSchedule: $superGtSchedule, f1Schedule: $f1Schedule)';
   }
 
   @override
@@ -160,7 +191,14 @@ class _$HomeViewModelStateImpl implements _HomeViewModelState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.error, error) || other.error == error) &&
-            const DeepCollectionEquality().equals(other._schedule, _schedule));
+            const DeepCollectionEquality().equals(
+              other._superGtSchedule,
+              _superGtSchedule,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._f1Schedule,
+              _f1Schedule,
+            ));
   }
 
   @override
@@ -168,7 +206,8 @@ class _$HomeViewModelStateImpl implements _HomeViewModelState {
     runtimeType,
     isLoading,
     error,
-    const DeepCollectionEquality().hash(_schedule),
+    const DeepCollectionEquality().hash(_superGtSchedule),
+    const DeepCollectionEquality().hash(_f1Schedule),
   );
 
   /// Create a copy of HomeViewModelState
@@ -187,7 +226,8 @@ abstract class _HomeViewModelState implements HomeViewModelState {
   const factory _HomeViewModelState({
     required final bool isLoading,
     required final String error,
-    required final List<ScheduleEntry> schedule,
+    required final List<ScheduleEntry> superGtSchedule,
+    required final List<ScheduleEntry> f1Schedule,
   }) = _$HomeViewModelStateImpl;
 
   @override
@@ -195,7 +235,9 @@ abstract class _HomeViewModelState implements HomeViewModelState {
   @override
   String get error;
   @override
-  List<ScheduleEntry> get schedule;
+  List<ScheduleEntry> get superGtSchedule;
+  @override
+  List<ScheduleEntry> get f1Schedule;
 
   /// Create a copy of HomeViewModelState
   /// with the given fields replaced by the non-null parameter values.

@@ -6,9 +6,9 @@ part of 'schedule.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SuperGTScheduleResponseImpl _$$SuperGTScheduleResponseImplFromJson(
+_$ScheduleResponseImpl _$$ScheduleResponseImplFromJson(
   Map<String, dynamic> json,
-) => _$SuperGTScheduleResponseImpl(
+) => _$ScheduleResponseImpl(
   status: (json['status'] as num).toInt(),
   name: json['name'] as String,
   year: json['year'] as String,
@@ -17,8 +17,8 @@ _$SuperGTScheduleResponseImpl _$$SuperGTScheduleResponseImplFromJson(
       .toList(),
 );
 
-Map<String, dynamic> _$$SuperGTScheduleResponseImplToJson(
-  _$SuperGTScheduleResponseImpl instance,
+Map<String, dynamic> _$$ScheduleResponseImplToJson(
+  _$ScheduleResponseImpl instance,
 ) => <String, dynamic>{
   'status': instance.status,
   'name': instance.name,

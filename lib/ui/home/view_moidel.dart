@@ -11,7 +11,8 @@ abstract class HomeViewModelState with _$HomeViewModelState {
   const factory HomeViewModelState({
     required bool isLoading,
     required String error,
-    required List<ScheduleEntry> schedule,
+    required List<ScheduleEntry> superGtSchedule,
+    required List<ScheduleEntry> f1Schedule,
   }) = _HomeViewModelState;
 }
 
@@ -19,11 +20,14 @@ abstract class HomeViewModelState with _$HomeViewModelState {
 class HomeViewModel extends _$HomeViewModel {
   @override
   HomeViewModelState build() {
-    final schedule = ref.watch(superGTScheduleProvider);
+    final superGtSchedule = ref.watch(superGTScheduleProvider);
+    final f1Schedule = ref.watch(f1ScheduleProvider);
+
     return HomeViewModelState(
-      isLoading: schedule.isLoading,
-      error: schedule.error?.toString() ?? '',
-      schedule: schedule.value?.schedule ?? [],
+      isLoading: superGtSchedule.isLoading,
+      error: superGtSchedule.error?.toString() ?? '',
+      superGtSchedule: superGtSchedule.value?.schedule ?? [],
+      f1Schedule: f1Schedule.value?.schedule ?? [],
     );
   }
 }

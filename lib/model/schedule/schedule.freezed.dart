@@ -15,35 +15,33 @@ final _privateConstructorUsedError = UnsupportedError(
   'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
 );
 
-SuperGTScheduleResponse _$SuperGTScheduleResponseFromJson(
-  Map<String, dynamic> json,
-) {
-  return _SuperGTScheduleResponse.fromJson(json);
+ScheduleResponse _$ScheduleResponseFromJson(Map<String, dynamic> json) {
+  return _ScheduleResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SuperGTScheduleResponse {
+mixin _$ScheduleResponse {
   int get status => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get year => throw _privateConstructorUsedError;
   List<ScheduleEntry> get schedule => throw _privateConstructorUsedError;
 
-  /// Serializes this SuperGTScheduleResponse to a JSON map.
+  /// Serializes this ScheduleResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of SuperGTScheduleResponse
+  /// Create a copy of ScheduleResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SuperGTScheduleResponseCopyWith<SuperGTScheduleResponse> get copyWith =>
+  $ScheduleResponseCopyWith<ScheduleResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SuperGTScheduleResponseCopyWith<$Res> {
-  factory $SuperGTScheduleResponseCopyWith(
-    SuperGTScheduleResponse value,
-    $Res Function(SuperGTScheduleResponse) then,
-  ) = _$SuperGTScheduleResponseCopyWithImpl<$Res, SuperGTScheduleResponse>;
+abstract class $ScheduleResponseCopyWith<$Res> {
+  factory $ScheduleResponseCopyWith(
+    ScheduleResponse value,
+    $Res Function(ScheduleResponse) then,
+  ) = _$ScheduleResponseCopyWithImpl<$Res, ScheduleResponse>;
   @useResult
   $Res call({
     int status,
@@ -54,19 +52,16 @@ abstract class $SuperGTScheduleResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SuperGTScheduleResponseCopyWithImpl<
-  $Res,
-  $Val extends SuperGTScheduleResponse
->
-    implements $SuperGTScheduleResponseCopyWith<$Res> {
-  _$SuperGTScheduleResponseCopyWithImpl(this._value, this._then);
+class _$ScheduleResponseCopyWithImpl<$Res, $Val extends ScheduleResponse>
+    implements $ScheduleResponseCopyWith<$Res> {
+  _$ScheduleResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SuperGTScheduleResponse
+  /// Create a copy of ScheduleResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -101,12 +96,12 @@ class _$SuperGTScheduleResponseCopyWithImpl<
 }
 
 /// @nodoc
-abstract class _$$SuperGTScheduleResponseImplCopyWith<$Res>
-    implements $SuperGTScheduleResponseCopyWith<$Res> {
-  factory _$$SuperGTScheduleResponseImplCopyWith(
-    _$SuperGTScheduleResponseImpl value,
-    $Res Function(_$SuperGTScheduleResponseImpl) then,
-  ) = __$$SuperGTScheduleResponseImplCopyWithImpl<$Res>;
+abstract class _$$ScheduleResponseImplCopyWith<$Res>
+    implements $ScheduleResponseCopyWith<$Res> {
+  factory _$$ScheduleResponseImplCopyWith(
+    _$ScheduleResponseImpl value,
+    $Res Function(_$ScheduleResponseImpl) then,
+  ) = __$$ScheduleResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({
@@ -118,19 +113,15 @@ abstract class _$$SuperGTScheduleResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SuperGTScheduleResponseImplCopyWithImpl<$Res>
-    extends
-        _$SuperGTScheduleResponseCopyWithImpl<
-          $Res,
-          _$SuperGTScheduleResponseImpl
-        >
-    implements _$$SuperGTScheduleResponseImplCopyWith<$Res> {
-  __$$SuperGTScheduleResponseImplCopyWithImpl(
-    _$SuperGTScheduleResponseImpl _value,
-    $Res Function(_$SuperGTScheduleResponseImpl) _then,
+class __$$ScheduleResponseImplCopyWithImpl<$Res>
+    extends _$ScheduleResponseCopyWithImpl<$Res, _$ScheduleResponseImpl>
+    implements _$$ScheduleResponseImplCopyWith<$Res> {
+  __$$ScheduleResponseImplCopyWithImpl(
+    _$ScheduleResponseImpl _value,
+    $Res Function(_$ScheduleResponseImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of SuperGTScheduleResponse
+  /// Create a copy of ScheduleResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -141,7 +132,7 @@ class __$$SuperGTScheduleResponseImplCopyWithImpl<$Res>
     Object? schedule = null,
   }) {
     return _then(
-      _$SuperGTScheduleResponseImpl(
+      _$ScheduleResponseImpl(
         status: null == status
             ? _value.status
             : status // ignore: cast_nullable_to_non_nullable
@@ -165,16 +156,16 @@ class __$$SuperGTScheduleResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SuperGTScheduleResponseImpl implements _SuperGTScheduleResponse {
-  const _$SuperGTScheduleResponseImpl({
+class _$ScheduleResponseImpl implements _ScheduleResponse {
+  const _$ScheduleResponseImpl({
     required this.status,
     required this.name,
     required this.year,
     required final List<ScheduleEntry> schedule,
   }) : _schedule = schedule;
 
-  factory _$SuperGTScheduleResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SuperGTScheduleResponseImplFromJson(json);
+  factory _$ScheduleResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ScheduleResponseImplFromJson(json);
 
   @override
   final int status;
@@ -192,14 +183,14 @@ class _$SuperGTScheduleResponseImpl implements _SuperGTScheduleResponse {
 
   @override
   String toString() {
-    return 'SuperGTScheduleResponse(status: $status, name: $name, year: $year, schedule: $schedule)';
+    return 'ScheduleResponse(status: $status, name: $name, year: $year, schedule: $schedule)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuperGTScheduleResponseImpl &&
+            other is _$ScheduleResponseImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.year, year) || other.year == year) &&
@@ -216,33 +207,33 @@ class _$SuperGTScheduleResponseImpl implements _SuperGTScheduleResponse {
     const DeepCollectionEquality().hash(_schedule),
   );
 
-  /// Create a copy of SuperGTScheduleResponse
+  /// Create a copy of ScheduleResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuperGTScheduleResponseImplCopyWith<_$SuperGTScheduleResponseImpl>
-  get copyWith =>
-      __$$SuperGTScheduleResponseImplCopyWithImpl<
-        _$SuperGTScheduleResponseImpl
-      >(this, _$identity);
+  _$$ScheduleResponseImplCopyWith<_$ScheduleResponseImpl> get copyWith =>
+      __$$ScheduleResponseImplCopyWithImpl<_$ScheduleResponseImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SuperGTScheduleResponseImplToJson(this);
+    return _$$ScheduleResponseImplToJson(this);
   }
 }
 
-abstract class _SuperGTScheduleResponse implements SuperGTScheduleResponse {
-  const factory _SuperGTScheduleResponse({
+abstract class _ScheduleResponse implements ScheduleResponse {
+  const factory _ScheduleResponse({
     required final int status,
     required final String name,
     required final String year,
     required final List<ScheduleEntry> schedule,
-  }) = _$SuperGTScheduleResponseImpl;
+  }) = _$ScheduleResponseImpl;
 
-  factory _SuperGTScheduleResponse.fromJson(Map<String, dynamic> json) =
-      _$SuperGTScheduleResponseImpl.fromJson;
+  factory _ScheduleResponse.fromJson(Map<String, dynamic> json) =
+      _$ScheduleResponseImpl.fromJson;
 
   @override
   int get status;
@@ -253,12 +244,12 @@ abstract class _SuperGTScheduleResponse implements SuperGTScheduleResponse {
   @override
   List<ScheduleEntry> get schedule;
 
-  /// Create a copy of SuperGTScheduleResponse
+  /// Create a copy of ScheduleResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuperGTScheduleResponseImplCopyWith<_$SuperGTScheduleResponseImpl>
-  get copyWith => throw _privateConstructorUsedError;
+  _$$ScheduleResponseImplCopyWith<_$ScheduleResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 ScheduleEntry _$ScheduleEntryFromJson(Map<String, dynamic> json) {

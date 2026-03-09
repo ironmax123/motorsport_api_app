@@ -31,7 +31,22 @@ class HomeScreen extends HookConsumerWidget {
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
-              HomeScreenSchedule(schedule: state.schedule),
+              HomeScreenSchedule(schedule: state.superGtSchedule),
+              Gap(24),
+              HomeScreenButton(
+                onTap: () => context.push('/entry', extra: 'F1'),
+                label: "F1",
+                color: const Color(0xffE10600),
+              ),
+              Gap(12),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "2026 season Schedule",
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
+              ),
+              HomeScreenSchedule(schedule: state.f1Schedule),
             ],
           ),
         ),

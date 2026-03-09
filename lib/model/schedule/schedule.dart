@@ -4,16 +4,16 @@ part 'schedule.freezed.dart';
 part 'schedule.g.dart';
 
 @freezed
-abstract class SuperGTScheduleResponse with _$SuperGTScheduleResponse {
-  const factory SuperGTScheduleResponse({
+abstract class ScheduleResponse with _$ScheduleResponse {
+  const factory ScheduleResponse({
     required int status,
     required String name,
     required String year,
     required List<ScheduleEntry> schedule,
-  }) = _SuperGTScheduleResponse;
+  }) = _ScheduleResponse;
 
-  factory SuperGTScheduleResponse.fromJson(Map<String, dynamic> json) =>
-      _$SuperGTScheduleResponseFromJson(json);
+  factory ScheduleResponse.fromJson(Map<String, dynamic> json) =>
+      _$ScheduleResponseFromJson(json);
 }
 
 @freezed
