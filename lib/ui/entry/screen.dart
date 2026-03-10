@@ -12,7 +12,7 @@ class EntryScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(entryViewModelProvider);
+    final state = ref.watch(entryViewModelProvider(raceName));
     final selected = useState(0);
     if (state.isLoading) {
       return const Center(child: CircularProgressIndicator());
@@ -23,27 +23,31 @@ class EntryScreen extends HookConsumerWidget {
       body: ListView(
         children: [
           Text("2026 season Entry", style: TextStyle(fontSize: 20)),
-          ButtonGroup.connected(
-            selectionMode: ButtonGroupSelectionMode.required,
-            initialSelection: {selected.value},
-            onSelectionChanged: (s) {
-              selected.value = s.first;
-              final category = selected.value == 0 ? 'gt500' : 'gt300';
-              ref.read(entryViewModelProvider.notifier).fetch(category);
-            },
-            children: const [
-              ButtonGroupItem(label: 'GT 500'),
-              ButtonGroupItem(label: 'GT 300'),
-            ],
-          ),
-          Gap(12),
+          if (raceName == 'Super GT') ...[
+            ButtonGroup.connected(
+              selectionMode: ButtonGroupSelectionMode.required,
+              initialSelection: {selected.value},
+              onSelectionChanged: (s) {
+                selected.value = s.first;
+                final category = selected.value == 0 ? 'gt500' : 'gt300';
+                ref
+                    .read(entryViewModelProvider(raceName).notifier)
+                    .fetch(category);
+              },
+              children: const [
+                ButtonGroupItem(label: 'GT 500'),
+                ButtonGroupItem(label: 'GT 300'),
+              ],
+            ),
+            Gap(12),
+          ],
           for (final team in state.teams) ...[
             CarLabel(
               carNumber: team.carNumber,
-              label1: team.car,
-              label2: team.name,
-              driverName1: team.driver1,
-              driverName2: team.driver2,
+              label1: team.label1,
+              label2: team.label2,
+              driverName1: team.driverName1,
+              driverName2: team.driverName2,
             ),
             Gap(12),
           ],

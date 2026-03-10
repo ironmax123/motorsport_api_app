@@ -15,3 +15,14 @@ class SuperGTCars extends _$SuperGTCars {
     return SuperGTCarsResponse.fromJson(response.data);
   }
 }
+
+@Riverpod(keepAlive: true)
+class F1Cars extends _$F1Cars {
+  @override
+  Future<CarsResponsef1> build() async {
+    final client = ref.watch(apiClientProvider);
+    final endpoint = '/v1/f1/cars';
+    final response = await client.get(endpoint);
+    return CarsResponsef1.fromJson(response.data);
+  }
+}

@@ -160,5 +160,20 @@ class _SuperGTCarsProviderElement
   String get category => (origin as SuperGTCarsProvider).category;
 }
 
+String _$f1CarsHash() => r'6b00aefefe0b8a05d4f15792b49d5182c302b0f4';
+
+/// See also [F1Cars].
+@ProviderFor(F1Cars)
+final f1CarsProvider = AsyncNotifierProvider<F1Cars, CarsResponsef1>.internal(
+  F1Cars.new,
+  name: r'f1CarsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$f1CarsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$F1Cars = AsyncNotifier<CarsResponsef1>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

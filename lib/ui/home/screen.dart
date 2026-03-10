@@ -21,7 +21,7 @@ class HomeScreen extends HookConsumerWidget {
               HomeScreenButton(
                 onTap: () => context.push('/entry', extra: 'Super GT'),
                 label: "Super GT",
-                color: const Color(0xffCC0000),
+                color: const Color.fromARGB(255, 204, 68, 0),
               ),
               Gap(12),
               Align(
@@ -34,7 +34,7 @@ class HomeScreen extends HookConsumerWidget {
               HomeScreenSchedule(schedule: state.superGtSchedule),
               Gap(24),
               HomeScreenButton(
-                onTap: () => context.push('/entry', extra: 'F1'),
+                onTap: () => context.push('/entry', extra: 'f1'),
                 label: "F1",
                 color: const Color(0xffE10600),
               ),

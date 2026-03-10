@@ -31,3 +31,31 @@ abstract class TeamEntry with _$TeamEntry {
   factory TeamEntry.fromJson(Map<String, dynamic> json) =>
       _$TeamEntryFromJson(json);
 }
+
+@freezed
+abstract class CarsResponsef1 with _$CarsResponsef1 {
+  const factory CarsResponsef1({
+    required int status,
+    required String name,
+    required String category,
+    required String season,
+    required List<TeamEntryF1> teams,
+  }) = _CarsResponsef1;
+
+  factory CarsResponsef1.fromJson(Map<String, dynamic> json) =>
+      _$CarsResponsef1FromJson(json);
+}
+
+@freezed
+abstract class TeamEntryF1 with _$TeamEntryF1 {
+  const factory TeamEntryF1({
+    required String name,
+    required String chassis,
+    required String engine,
+    required String driver1,
+    required String driver2,
+  }) = _TeamEntryF1;
+
+  factory TeamEntryF1.fromJson(Map<String, dynamic> json) =>
+      _$TeamEntryF1FromJson(json);
+}
