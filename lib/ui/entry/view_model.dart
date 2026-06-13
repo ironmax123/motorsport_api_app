@@ -6,10 +6,12 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'view_model.freezed.dart';
 part 'view_model.g.dart';
 
+/// TODO:VMの責務をオーバーしているような気がするので修正が必要かも
+
 @freezed
 abstract class EntryItem with _$EntryItem {
   const factory EntryItem({
-    required String carNumber,
+    required String? carNumber,
     required String label1,
     required String label2,
     required String driverName1,
@@ -86,7 +88,7 @@ class EntryViewModel extends _$EntryViewModel {
     return teams
         .map(
           (t) => EntryItem(
-            carNumber: '', // F1データには現在のところcarNumberがないため空文字
+            carNumber: null,
             label1: t.chassis,
             label2: t.name,
             driverName1: t.driver1,

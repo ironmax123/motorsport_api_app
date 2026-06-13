@@ -22,3 +22,29 @@ class SuperGTResultsData extends _$SuperGTResultsData {
     return SuperGTResultsResponse.fromJson(response.data);
   }
 }
+
+@Riverpod(keepAlive: true)
+class RaceResultsData extends _$RaceResultsData {
+  @override
+  Future<SuperGTResultsResponse> build({
+    required String raceType,
+    required String category,
+    required String year,
+    String? round,
+  }) async {
+    final client = ref.watch(apiClientProvider);
+    final isF1 = raceType == 'F1';
+    final path = isF1
+        ? '/v1/f1/race/results'
+        : '/v1/super-gt/race/results/$category';
+    final endpoint = Uri(
+      path: path,
+      queryParameters: {
+        'year': year,
+        if (round != null && round != 'total') 'round': round,
+      },
+    ).toString();
+    final response = await client.get(endpoint);
+    return SuperGTResultsResponse.fromJson(response.data);
+  }
+}

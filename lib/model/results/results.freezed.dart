@@ -309,9 +309,15 @@ RaceResult _$RaceResultFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$RaceResult {
   String get rank => throw _privateConstructorUsedError;
+  @JsonKey(name: 'car_number')
+  String? get carNumber => throw _privateConstructorUsedError;
+  String? get points => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_points')
+  String? get totalPoints => throw _privateConstructorUsedError;
+  String? get driver => throw _privateConstructorUsedError;
   String? get laps => throw _privateConstructorUsedError;
   String? get diff => throw _privateConstructorUsedError;
-  TeamEntry? get team => throw _privateConstructorUsedError;
+  ResultParticipant? get team => throw _privateConstructorUsedError;
 
   /// Serializes this RaceResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -330,9 +336,18 @@ abstract class $RaceResultCopyWith<$Res> {
     $Res Function(RaceResult) then,
   ) = _$RaceResultCopyWithImpl<$Res, RaceResult>;
   @useResult
-  $Res call({String rank, String? laps, String? diff, TeamEntry? team});
+  $Res call({
+    String rank,
+    @JsonKey(name: 'car_number') String? carNumber,
+    String? points,
+    @JsonKey(name: 'total_points') String? totalPoints,
+    String? driver,
+    String? laps,
+    String? diff,
+    ResultParticipant? team,
+  });
 
-  $TeamEntryCopyWith<$Res>? get team;
+  $ResultParticipantCopyWith<$Res>? get team;
 }
 
 /// @nodoc
@@ -351,6 +366,10 @@ class _$RaceResultCopyWithImpl<$Res, $Val extends RaceResult>
   @override
   $Res call({
     Object? rank = null,
+    Object? carNumber = freezed,
+    Object? points = freezed,
+    Object? totalPoints = freezed,
+    Object? driver = freezed,
     Object? laps = freezed,
     Object? diff = freezed,
     Object? team = freezed,
@@ -361,6 +380,22 @@ class _$RaceResultCopyWithImpl<$Res, $Val extends RaceResult>
                 ? _value.rank
                 : rank // ignore: cast_nullable_to_non_nullable
                       as String,
+            carNumber: freezed == carNumber
+                ? _value.carNumber
+                : carNumber // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            points: freezed == points
+                ? _value.points
+                : points // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            totalPoints: freezed == totalPoints
+                ? _value.totalPoints
+                : totalPoints // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            driver: freezed == driver
+                ? _value.driver
+                : driver // ignore: cast_nullable_to_non_nullable
+                      as String?,
             laps: freezed == laps
                 ? _value.laps
                 : laps // ignore: cast_nullable_to_non_nullable
@@ -372,7 +407,7 @@ class _$RaceResultCopyWithImpl<$Res, $Val extends RaceResult>
             team: freezed == team
                 ? _value.team
                 : team // ignore: cast_nullable_to_non_nullable
-                      as TeamEntry?,
+                      as ResultParticipant?,
           )
           as $Val,
     );
@@ -382,12 +417,12 @@ class _$RaceResultCopyWithImpl<$Res, $Val extends RaceResult>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $TeamEntryCopyWith<$Res>? get team {
+  $ResultParticipantCopyWith<$Res>? get team {
     if (_value.team == null) {
       return null;
     }
 
-    return $TeamEntryCopyWith<$Res>(_value.team!, (value) {
+    return $ResultParticipantCopyWith<$Res>(_value.team!, (value) {
       return _then(_value.copyWith(team: value) as $Val);
     });
   }
@@ -402,10 +437,19 @@ abstract class _$$RaceResultImplCopyWith<$Res>
   ) = __$$RaceResultImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String rank, String? laps, String? diff, TeamEntry? team});
+  $Res call({
+    String rank,
+    @JsonKey(name: 'car_number') String? carNumber,
+    String? points,
+    @JsonKey(name: 'total_points') String? totalPoints,
+    String? driver,
+    String? laps,
+    String? diff,
+    ResultParticipant? team,
+  });
 
   @override
-  $TeamEntryCopyWith<$Res>? get team;
+  $ResultParticipantCopyWith<$Res>? get team;
 }
 
 /// @nodoc
@@ -423,6 +467,10 @@ class __$$RaceResultImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? rank = null,
+    Object? carNumber = freezed,
+    Object? points = freezed,
+    Object? totalPoints = freezed,
+    Object? driver = freezed,
     Object? laps = freezed,
     Object? diff = freezed,
     Object? team = freezed,
@@ -433,6 +481,22 @@ class __$$RaceResultImplCopyWithImpl<$Res>
             ? _value.rank
             : rank // ignore: cast_nullable_to_non_nullable
                   as String,
+        carNumber: freezed == carNumber
+            ? _value.carNumber
+            : carNumber // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        points: freezed == points
+            ? _value.points
+            : points // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        totalPoints: freezed == totalPoints
+            ? _value.totalPoints
+            : totalPoints // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        driver: freezed == driver
+            ? _value.driver
+            : driver // ignore: cast_nullable_to_non_nullable
+                  as String?,
         laps: freezed == laps
             ? _value.laps
             : laps // ignore: cast_nullable_to_non_nullable
@@ -444,7 +508,7 @@ class __$$RaceResultImplCopyWithImpl<$Res>
         team: freezed == team
             ? _value.team
             : team // ignore: cast_nullable_to_non_nullable
-                  as TeamEntry?,
+                  as ResultParticipant?,
       ),
     );
   }
@@ -455,6 +519,10 @@ class __$$RaceResultImplCopyWithImpl<$Res>
 class _$RaceResultImpl implements _RaceResult {
   const _$RaceResultImpl({
     required this.rank,
+    @JsonKey(name: 'car_number') this.carNumber,
+    this.points,
+    @JsonKey(name: 'total_points') this.totalPoints,
+    this.driver,
     this.laps,
     this.diff,
     required this.team,
@@ -466,15 +534,25 @@ class _$RaceResultImpl implements _RaceResult {
   @override
   final String rank;
   @override
+  @JsonKey(name: 'car_number')
+  final String? carNumber;
+  @override
+  final String? points;
+  @override
+  @JsonKey(name: 'total_points')
+  final String? totalPoints;
+  @override
+  final String? driver;
+  @override
   final String? laps;
   @override
   final String? diff;
   @override
-  final TeamEntry? team;
+  final ResultParticipant? team;
 
   @override
   String toString() {
-    return 'RaceResult(rank: $rank, laps: $laps, diff: $diff, team: $team)';
+    return 'RaceResult(rank: $rank, carNumber: $carNumber, points: $points, totalPoints: $totalPoints, driver: $driver, laps: $laps, diff: $diff, team: $team)';
   }
 
   @override
@@ -483,6 +561,12 @@ class _$RaceResultImpl implements _RaceResult {
         (other.runtimeType == runtimeType &&
             other is _$RaceResultImpl &&
             (identical(other.rank, rank) || other.rank == rank) &&
+            (identical(other.carNumber, carNumber) ||
+                other.carNumber == carNumber) &&
+            (identical(other.points, points) || other.points == points) &&
+            (identical(other.totalPoints, totalPoints) ||
+                other.totalPoints == totalPoints) &&
+            (identical(other.driver, driver) || other.driver == driver) &&
             (identical(other.laps, laps) || other.laps == laps) &&
             (identical(other.diff, diff) || other.diff == diff) &&
             (identical(other.team, team) || other.team == team));
@@ -490,7 +574,17 @@ class _$RaceResultImpl implements _RaceResult {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, rank, laps, diff, team);
+  int get hashCode => Object.hash(
+    runtimeType,
+    rank,
+    carNumber,
+    points,
+    totalPoints,
+    driver,
+    laps,
+    diff,
+    team,
+  );
 
   /// Create a copy of RaceResult
   /// with the given fields replaced by the non-null parameter values.
@@ -509,9 +603,13 @@ class _$RaceResultImpl implements _RaceResult {
 abstract class _RaceResult implements RaceResult {
   const factory _RaceResult({
     required final String rank,
+    @JsonKey(name: 'car_number') final String? carNumber,
+    final String? points,
+    @JsonKey(name: 'total_points') final String? totalPoints,
+    final String? driver,
     final String? laps,
     final String? diff,
-    required final TeamEntry? team,
+    required final ResultParticipant? team,
   }) = _$RaceResultImpl;
 
   factory _RaceResult.fromJson(Map<String, dynamic> json) =
@@ -520,16 +618,388 @@ abstract class _RaceResult implements RaceResult {
   @override
   String get rank;
   @override
+  @JsonKey(name: 'car_number')
+  String? get carNumber;
+  @override
+  String? get points;
+  @override
+  @JsonKey(name: 'total_points')
+  String? get totalPoints;
+  @override
+  String? get driver;
+  @override
   String? get laps;
   @override
   String? get diff;
   @override
-  TeamEntry? get team;
+  ResultParticipant? get team;
 
   /// Create a copy of RaceResult
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RaceResultImplCopyWith<_$RaceResultImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ResultParticipant _$ResultParticipantFromJson(Map<String, dynamic> json) {
+  return _ResultParticipant.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ResultParticipant {
+  @JsonKey(name: 'car_number')
+  String? get carNumber => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String? get machine => throw _privateConstructorUsedError;
+  String? get car => throw _privateConstructorUsedError;
+  String? get chassis => throw _privateConstructorUsedError;
+  String? get engine => throw _privateConstructorUsedError;
+  String? get driver1 => throw _privateConstructorUsedError;
+  String? get driver2 => throw _privateConstructorUsedError;
+  String? get driver3 => throw _privateConstructorUsedError;
+  String? get driver4 => throw _privateConstructorUsedError;
+
+  /// Serializes this ResultParticipant to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ResultParticipant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ResultParticipantCopyWith<ResultParticipant> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ResultParticipantCopyWith<$Res> {
+  factory $ResultParticipantCopyWith(
+    ResultParticipant value,
+    $Res Function(ResultParticipant) then,
+  ) = _$ResultParticipantCopyWithImpl<$Res, ResultParticipant>;
+  @useResult
+  $Res call({
+    @JsonKey(name: 'car_number') String? carNumber,
+    String name,
+    String? machine,
+    String? car,
+    String? chassis,
+    String? engine,
+    String? driver1,
+    String? driver2,
+    String? driver3,
+    String? driver4,
+  });
+}
+
+/// @nodoc
+class _$ResultParticipantCopyWithImpl<$Res, $Val extends ResultParticipant>
+    implements $ResultParticipantCopyWith<$Res> {
+  _$ResultParticipantCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ResultParticipant
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? carNumber = freezed,
+    Object? name = null,
+    Object? machine = freezed,
+    Object? car = freezed,
+    Object? chassis = freezed,
+    Object? engine = freezed,
+    Object? driver1 = freezed,
+    Object? driver2 = freezed,
+    Object? driver3 = freezed,
+    Object? driver4 = freezed,
+  }) {
+    return _then(
+      _value.copyWith(
+            carNumber: freezed == carNumber
+                ? _value.carNumber
+                : carNumber // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            machine: freezed == machine
+                ? _value.machine
+                : machine // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            car: freezed == car
+                ? _value.car
+                : car // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            chassis: freezed == chassis
+                ? _value.chassis
+                : chassis // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            engine: freezed == engine
+                ? _value.engine
+                : engine // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            driver1: freezed == driver1
+                ? _value.driver1
+                : driver1 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            driver2: freezed == driver2
+                ? _value.driver2
+                : driver2 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            driver3: freezed == driver3
+                ? _value.driver3
+                : driver3 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            driver4: freezed == driver4
+                ? _value.driver4
+                : driver4 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
+  }
+}
+
+/// @nodoc
+abstract class _$$ResultParticipantImplCopyWith<$Res>
+    implements $ResultParticipantCopyWith<$Res> {
+  factory _$$ResultParticipantImplCopyWith(
+    _$ResultParticipantImpl value,
+    $Res Function(_$ResultParticipantImpl) then,
+  ) = __$$ResultParticipantImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({
+    @JsonKey(name: 'car_number') String? carNumber,
+    String name,
+    String? machine,
+    String? car,
+    String? chassis,
+    String? engine,
+    String? driver1,
+    String? driver2,
+    String? driver3,
+    String? driver4,
+  });
+}
+
+/// @nodoc
+class __$$ResultParticipantImplCopyWithImpl<$Res>
+    extends _$ResultParticipantCopyWithImpl<$Res, _$ResultParticipantImpl>
+    implements _$$ResultParticipantImplCopyWith<$Res> {
+  __$$ResultParticipantImplCopyWithImpl(
+    _$ResultParticipantImpl _value,
+    $Res Function(_$ResultParticipantImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ResultParticipant
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? carNumber = freezed,
+    Object? name = null,
+    Object? machine = freezed,
+    Object? car = freezed,
+    Object? chassis = freezed,
+    Object? engine = freezed,
+    Object? driver1 = freezed,
+    Object? driver2 = freezed,
+    Object? driver3 = freezed,
+    Object? driver4 = freezed,
+  }) {
+    return _then(
+      _$ResultParticipantImpl(
+        carNumber: freezed == carNumber
+            ? _value.carNumber
+            : carNumber // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        machine: freezed == machine
+            ? _value.machine
+            : machine // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        car: freezed == car
+            ? _value.car
+            : car // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        chassis: freezed == chassis
+            ? _value.chassis
+            : chassis // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        engine: freezed == engine
+            ? _value.engine
+            : engine // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        driver1: freezed == driver1
+            ? _value.driver1
+            : driver1 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        driver2: freezed == driver2
+            ? _value.driver2
+            : driver2 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        driver3: freezed == driver3
+            ? _value.driver3
+            : driver3 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        driver4: freezed == driver4
+            ? _value.driver4
+            : driver4 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ResultParticipantImpl implements _ResultParticipant {
+  const _$ResultParticipantImpl({
+    @JsonKey(name: 'car_number') this.carNumber,
+    required this.name,
+    this.machine,
+    this.car,
+    this.chassis,
+    this.engine,
+    this.driver1,
+    this.driver2,
+    this.driver3,
+    this.driver4,
+  });
+
+  factory _$ResultParticipantImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ResultParticipantImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'car_number')
+  final String? carNumber;
+  @override
+  final String name;
+  @override
+  final String? machine;
+  @override
+  final String? car;
+  @override
+  final String? chassis;
+  @override
+  final String? engine;
+  @override
+  final String? driver1;
+  @override
+  final String? driver2;
+  @override
+  final String? driver3;
+  @override
+  final String? driver4;
+
+  @override
+  String toString() {
+    return 'ResultParticipant(carNumber: $carNumber, name: $name, machine: $machine, car: $car, chassis: $chassis, engine: $engine, driver1: $driver1, driver2: $driver2, driver3: $driver3, driver4: $driver4)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ResultParticipantImpl &&
+            (identical(other.carNumber, carNumber) ||
+                other.carNumber == carNumber) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.machine, machine) || other.machine == machine) &&
+            (identical(other.car, car) || other.car == car) &&
+            (identical(other.chassis, chassis) || other.chassis == chassis) &&
+            (identical(other.engine, engine) || other.engine == engine) &&
+            (identical(other.driver1, driver1) || other.driver1 == driver1) &&
+            (identical(other.driver2, driver2) || other.driver2 == driver2) &&
+            (identical(other.driver3, driver3) || other.driver3 == driver3) &&
+            (identical(other.driver4, driver4) || other.driver4 == driver4));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+    runtimeType,
+    carNumber,
+    name,
+    machine,
+    car,
+    chassis,
+    engine,
+    driver1,
+    driver2,
+    driver3,
+    driver4,
+  );
+
+  /// Create a copy of ResultParticipant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ResultParticipantImplCopyWith<_$ResultParticipantImpl> get copyWith =>
+      __$$ResultParticipantImplCopyWithImpl<_$ResultParticipantImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ResultParticipantImplToJson(this);
+  }
+}
+
+abstract class _ResultParticipant implements ResultParticipant {
+  const factory _ResultParticipant({
+    @JsonKey(name: 'car_number') final String? carNumber,
+    required final String name,
+    final String? machine,
+    final String? car,
+    final String? chassis,
+    final String? engine,
+    final String? driver1,
+    final String? driver2,
+    final String? driver3,
+    final String? driver4,
+  }) = _$ResultParticipantImpl;
+
+  factory _ResultParticipant.fromJson(Map<String, dynamic> json) =
+      _$ResultParticipantImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'car_number')
+  String? get carNumber;
+  @override
+  String get name;
+  @override
+  String? get machine;
+  @override
+  String? get car;
+  @override
+  String? get chassis;
+  @override
+  String? get engine;
+  @override
+  String? get driver1;
+  @override
+  String? get driver2;
+  @override
+  String? get driver3;
+  @override
+  String? get driver4;
+
+  /// Create a copy of ResultParticipant
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ResultParticipantImplCopyWith<_$ResultParticipantImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -216,5 +216,214 @@ class _SuperGTResultsDataProviderElement
   String? get round => (origin as SuperGTResultsDataProvider).round;
 }
 
+String _$raceResultsDataHash() => r'2d0a5ee2a7ce05051d1c42e5a875a6d4e24a11cd';
+
+abstract class _$RaceResultsData
+    extends BuildlessAsyncNotifier<SuperGTResultsResponse> {
+  late final String raceType;
+  late final String category;
+  late final String year;
+  late final String? round;
+
+  FutureOr<SuperGTResultsResponse> build({
+    required String raceType,
+    required String category,
+    required String year,
+    String? round,
+  });
+}
+
+/// See also [RaceResultsData].
+@ProviderFor(RaceResultsData)
+const raceResultsDataProvider = RaceResultsDataFamily();
+
+/// See also [RaceResultsData].
+class RaceResultsDataFamily extends Family<AsyncValue<SuperGTResultsResponse>> {
+  /// See also [RaceResultsData].
+  const RaceResultsDataFamily();
+
+  /// See also [RaceResultsData].
+  RaceResultsDataProvider call({
+    required String raceType,
+    required String category,
+    required String year,
+    String? round,
+  }) {
+    return RaceResultsDataProvider(
+      raceType: raceType,
+      category: category,
+      year: year,
+      round: round,
+    );
+  }
+
+  @override
+  RaceResultsDataProvider getProviderOverride(
+    covariant RaceResultsDataProvider provider,
+  ) {
+    return call(
+      raceType: provider.raceType,
+      category: provider.category,
+      year: provider.year,
+      round: provider.round,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'raceResultsDataProvider';
+}
+
+/// See also [RaceResultsData].
+class RaceResultsDataProvider
+    extends AsyncNotifierProviderImpl<RaceResultsData, SuperGTResultsResponse> {
+  /// See also [RaceResultsData].
+  RaceResultsDataProvider({
+    required String raceType,
+    required String category,
+    required String year,
+    String? round,
+  }) : this._internal(
+         () => RaceResultsData()
+           ..raceType = raceType
+           ..category = category
+           ..year = year
+           ..round = round,
+         from: raceResultsDataProvider,
+         name: r'raceResultsDataProvider',
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$raceResultsDataHash,
+         dependencies: RaceResultsDataFamily._dependencies,
+         allTransitiveDependencies:
+             RaceResultsDataFamily._allTransitiveDependencies,
+         raceType: raceType,
+         category: category,
+         year: year,
+         round: round,
+       );
+
+  RaceResultsDataProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.raceType,
+    required this.category,
+    required this.year,
+    required this.round,
+  }) : super.internal();
+
+  final String raceType;
+  final String category;
+  final String year;
+  final String? round;
+
+  @override
+  FutureOr<SuperGTResultsResponse> runNotifierBuild(
+    covariant RaceResultsData notifier,
+  ) {
+    return notifier.build(
+      raceType: raceType,
+      category: category,
+      year: year,
+      round: round,
+    );
+  }
+
+  @override
+  Override overrideWith(RaceResultsData Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: RaceResultsDataProvider._internal(
+        () => create()
+          ..raceType = raceType
+          ..category = category
+          ..year = year
+          ..round = round,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        raceType: raceType,
+        category: category,
+        year: year,
+        round: round,
+      ),
+    );
+  }
+
+  @override
+  AsyncNotifierProviderElement<RaceResultsData, SuperGTResultsResponse>
+  createElement() {
+    return _RaceResultsDataProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is RaceResultsDataProvider &&
+        other.raceType == raceType &&
+        other.category == category &&
+        other.year == year &&
+        other.round == round;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, raceType.hashCode);
+    hash = _SystemHash.combine(hash, category.hashCode);
+    hash = _SystemHash.combine(hash, year.hashCode);
+    hash = _SystemHash.combine(hash, round.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin RaceResultsDataRef on AsyncNotifierProviderRef<SuperGTResultsResponse> {
+  /// The parameter `raceType` of this provider.
+  String get raceType;
+
+  /// The parameter `category` of this provider.
+  String get category;
+
+  /// The parameter `year` of this provider.
+  String get year;
+
+  /// The parameter `round` of this provider.
+  String? get round;
+}
+
+class _RaceResultsDataProviderElement
+    extends
+        AsyncNotifierProviderElement<RaceResultsData, SuperGTResultsResponse>
+    with RaceResultsDataRef {
+  _RaceResultsDataProviderElement(super.provider);
+
+  @override
+  String get raceType => (origin as RaceResultsDataProvider).raceType;
+  @override
+  String get category => (origin as RaceResultsDataProvider).category;
+  @override
+  String get year => (origin as RaceResultsDataProvider).year;
+  @override
+  String? get round => (origin as RaceResultsDataProvider).round;
+}
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

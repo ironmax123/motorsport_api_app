@@ -1,4 +1,3 @@
-import 'package:example/model/cars/cars.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'results.freezed.dart';
@@ -23,11 +22,34 @@ abstract class SuperGTResultsResponse with _$SuperGTResultsResponse {
 abstract class RaceResult with _$RaceResult {
   const factory RaceResult({
     required String rank,
+    @JsonKey(name: 'car_number') String? carNumber,
+    String? points,
+    @JsonKey(name: 'total_points') String? totalPoints,
+    String? driver,
     String? laps,
     String? diff,
-    required TeamEntry? team,
+    required ResultParticipant? team,
   }) = _RaceResult;
 
   factory RaceResult.fromJson(Map<String, dynamic> json) =>
       _$RaceResultFromJson(json);
+}
+
+@freezed
+abstract class ResultParticipant with _$ResultParticipant {
+  const factory ResultParticipant({
+    @JsonKey(name: 'car_number') String? carNumber,
+    required String name,
+    String? machine,
+    String? car,
+    String? chassis,
+    String? engine,
+    String? driver1,
+    String? driver2,
+    String? driver3,
+    String? driver4,
+  }) = _ResultParticipant;
+
+  factory ResultParticipant.fromJson(Map<String, dynamic> json) =>
+      _$ResultParticipantFromJson(json);
 }

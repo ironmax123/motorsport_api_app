@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EntryItem {
-  String get carNumber => throw _privateConstructorUsedError;
+  String? get carNumber => throw _privateConstructorUsedError;
   String get label1 => throw _privateConstructorUsedError;
   String get label2 => throw _privateConstructorUsedError;
   String get driverName1 => throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ abstract class $EntryItemCopyWith<$Res> {
       _$EntryItemCopyWithImpl<$Res, EntryItem>;
   @useResult
   $Res call({
-    String carNumber,
+    String? carNumber,
     String label1,
     String label2,
     String driverName1,
@@ -59,7 +59,7 @@ class _$EntryItemCopyWithImpl<$Res, $Val extends EntryItem>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? carNumber = null,
+    Object? carNumber = freezed,
     Object? label1 = null,
     Object? label2 = null,
     Object? driverName1 = null,
@@ -67,10 +67,10 @@ class _$EntryItemCopyWithImpl<$Res, $Val extends EntryItem>
   }) {
     return _then(
       _value.copyWith(
-            carNumber: null == carNumber
+            carNumber: freezed == carNumber
                 ? _value.carNumber
                 : carNumber // ignore: cast_nullable_to_non_nullable
-                      as String,
+                      as String?,
             label1: null == label1
                 ? _value.label1
                 : label1 // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ abstract class _$$EntryItemImplCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    String carNumber,
+    String? carNumber,
     String label1,
     String label2,
     String driverName1,
@@ -125,7 +125,7 @@ class __$$EntryItemImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? carNumber = null,
+    Object? carNumber = freezed,
     Object? label1 = null,
     Object? label2 = null,
     Object? driverName1 = null,
@@ -133,10 +133,10 @@ class __$$EntryItemImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$EntryItemImpl(
-        carNumber: null == carNumber
+        carNumber: freezed == carNumber
             ? _value.carNumber
             : carNumber // ignore: cast_nullable_to_non_nullable
-                  as String,
+                  as String?,
         label1: null == label1
             ? _value.label1
             : label1 // ignore: cast_nullable_to_non_nullable
@@ -170,7 +170,7 @@ class _$EntryItemImpl implements _EntryItem {
   });
 
   @override
-  final String carNumber;
+  final String? carNumber;
   @override
   final String label1;
   @override
@@ -221,7 +221,7 @@ class _$EntryItemImpl implements _EntryItem {
 
 abstract class _EntryItem implements EntryItem {
   const factory _EntryItem({
-    required final String carNumber,
+    required final String? carNumber,
     required final String label1,
     required final String label2,
     required final String driverName1,
@@ -229,7 +229,7 @@ abstract class _EntryItem implements EntryItem {
   }) = _$EntryItemImpl;
 
   @override
-  String get carNumber;
+  String? get carNumber;
   @override
   String get label1;
   @override

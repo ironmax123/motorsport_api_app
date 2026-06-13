@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class CarLabel extends StatelessWidget {
-  final String carNumber;
+  final String? carNumber;
   final String label1;
   final String label2;
   final String driverName1;
@@ -11,7 +11,7 @@ class CarLabel extends StatelessWidget {
   final String? driverName4;
   const CarLabel({
     super.key,
-    required this.carNumber,
+    this.carNumber,
     required this.label1,
     required this.label2,
     required this.driverName1,
@@ -31,7 +31,7 @@ class CarLabel extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
             children: [
-              _NumberPlate(number: carNumber),
+              if (carNumber != null) _NumberPlate(number: carNumber!),
               Gap(4),
               Text(label1),
               Gap(10),

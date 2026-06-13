@@ -20,6 +20,7 @@ mixin _$RankViewModelState {
   bool get isLoading => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
   List<RaceResult> get results => throw _privateConstructorUsedError;
+  String get raceType => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
   String get year => throw _privateConstructorUsedError;
   String get round => throw _privateConstructorUsedError;
@@ -42,6 +43,7 @@ abstract class $RankViewModelStateCopyWith<$Res> {
     bool isLoading,
     String error,
     List<RaceResult> results,
+    String raceType,
     String category,
     String year,
     String round,
@@ -66,6 +68,7 @@ class _$RankViewModelStateCopyWithImpl<$Res, $Val extends RankViewModelState>
     Object? isLoading = null,
     Object? error = null,
     Object? results = null,
+    Object? raceType = null,
     Object? category = null,
     Object? year = null,
     Object? round = null,
@@ -84,6 +87,10 @@ class _$RankViewModelStateCopyWithImpl<$Res, $Val extends RankViewModelState>
                 ? _value.results
                 : results // ignore: cast_nullable_to_non_nullable
                       as List<RaceResult>,
+            raceType: null == raceType
+                ? _value.raceType
+                : raceType // ignore: cast_nullable_to_non_nullable
+                      as String,
             category: null == category
                 ? _value.category
                 : category // ignore: cast_nullable_to_non_nullable
@@ -115,6 +122,7 @@ abstract class _$$RankViewModelStateImplCopyWith<$Res>
     bool isLoading,
     String error,
     List<RaceResult> results,
+    String raceType,
     String category,
     String year,
     String round,
@@ -138,6 +146,7 @@ class __$$RankViewModelStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? error = null,
     Object? results = null,
+    Object? raceType = null,
     Object? category = null,
     Object? year = null,
     Object? round = null,
@@ -156,6 +165,10 @@ class __$$RankViewModelStateImplCopyWithImpl<$Res>
             ? _value._results
             : results // ignore: cast_nullable_to_non_nullable
                   as List<RaceResult>,
+        raceType: null == raceType
+            ? _value.raceType
+            : raceType // ignore: cast_nullable_to_non_nullable
+                  as String,
         category: null == category
             ? _value.category
             : category // ignore: cast_nullable_to_non_nullable
@@ -180,6 +193,7 @@ class _$RankViewModelStateImpl implements _RankViewModelState {
     required this.isLoading,
     required this.error,
     required final List<RaceResult> results,
+    required this.raceType,
     required this.category,
     required this.year,
     required this.round,
@@ -198,6 +212,8 @@ class _$RankViewModelStateImpl implements _RankViewModelState {
   }
 
   @override
+  final String raceType;
+  @override
   final String category;
   @override
   final String year;
@@ -206,7 +222,7 @@ class _$RankViewModelStateImpl implements _RankViewModelState {
 
   @override
   String toString() {
-    return 'RankViewModelState(isLoading: $isLoading, error: $error, results: $results, category: $category, year: $year, round: $round)';
+    return 'RankViewModelState(isLoading: $isLoading, error: $error, results: $results, raceType: $raceType, category: $category, year: $year, round: $round)';
   }
 
   @override
@@ -218,6 +234,8 @@ class _$RankViewModelStateImpl implements _RankViewModelState {
                 other.isLoading == isLoading) &&
             (identical(other.error, error) || other.error == error) &&
             const DeepCollectionEquality().equals(other._results, _results) &&
+            (identical(other.raceType, raceType) ||
+                other.raceType == raceType) &&
             (identical(other.category, category) ||
                 other.category == category) &&
             (identical(other.year, year) || other.year == year) &&
@@ -230,6 +248,7 @@ class _$RankViewModelStateImpl implements _RankViewModelState {
     isLoading,
     error,
     const DeepCollectionEquality().hash(_results),
+    raceType,
     category,
     year,
     round,
@@ -252,6 +271,7 @@ abstract class _RankViewModelState implements RankViewModelState {
     required final bool isLoading,
     required final String error,
     required final List<RaceResult> results,
+    required final String raceType,
     required final String category,
     required final String year,
     required final String round,
@@ -263,6 +283,8 @@ abstract class _RankViewModelState implements RankViewModelState {
   String get error;
   @override
   List<RaceResult> get results;
+  @override
+  String get raceType;
   @override
   String get category;
   @override

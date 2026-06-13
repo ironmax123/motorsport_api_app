@@ -23,7 +23,11 @@ class RankDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isRow) {
       return Row(
-        children: [_buildLabel(), const Gap(8), _buildDropdownContainer()],
+        children: [
+          _buildLabel(),
+          const Gap(8),
+          Flexible(child: _buildDropdownContainer()),
+        ],
       );
     } else {
       return Column(
@@ -45,6 +49,10 @@ class RankDropdown extends StatelessWidget {
   }
 
   Widget _buildDropdownContainer() {
+    final selectedValue = items.contains(value)
+        ? value
+        : (items.isNotEmpty ? items.first : null);
+
     return Container(
       height: 32,
       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -54,14 +62,18 @@ class RankDropdown extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
       ),
       child: DropdownButton<String>(
-        value: value,
+        value: selectedValue,
         style: const TextStyle(color: Colors.black),
         underline: const SizedBox(),
+        isExpanded: true,
         items: items
             .map(
               (e) => DropdownMenuItem(
                 value: e,
-                child: Text(labelBuilder?.call(e) ?? e),
+                child: Text(
+                  labelBuilder?.call(e) ?? e,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             )
             .toList(),
